@@ -27,7 +27,7 @@ struct DefaultBrowserUtilityTelemetry {
         apiQueryCount: Int?
     ) {
         let dateFormatter = ISO8601DateFormatter()
-        dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        dateFormatter.formatOptions = [.withInternetDateTime]
 
         let extra = GleanMetrics.App.DefaultBrowserApiErrorExtra(
             apiQueryCount: apiQueryCount.map { Int32($0) },

