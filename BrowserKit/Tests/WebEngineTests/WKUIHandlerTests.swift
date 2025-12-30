@@ -51,7 +51,7 @@ final class WKUIHandlerTests: XCTestCase {
                         initiatedByFrame: frame,
                         type: .cameraAndMicrophone,
                         decisionHandler: decisionHandler)
-        wait(for: [expectation])
+        wait(for: [expectation], timeout: 1.0)
     }
 
     func testRequestMediaCaptureIsActiveFalse() {
