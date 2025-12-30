@@ -49,12 +49,12 @@ final class FormAutofillHelperTests: XCTestCase {
     override func setUp() async throws {
         try await super.setUp()
         profile = MockProfile()
-        DependencyHelperMock().bootstrapDependencies()
+        await DependencyHelperMock().bootstrapDependencies()
         LegacyFeatureFlagsManager.shared.initializeDeveloperFeatures(with: profile)
-        tab = Tab(profile: profile, windowUUID: windowUUID)
+        tab = await Tab(profile: profile, windowUUID: windowUUID)
         formAutofillHelper = FormAutofillHelper(tab: tab)
-        secureWebviewMock = WKWebViewMock(URL(string: "https://foo.com")!)
-        secureFrameMock = WKFrameInfoMock(webView: secureWebviewMock, frameURL: URL(string: "https://foo.com")!)
+        secureWebviewMock = await WKWebViewMock(URL(string: "https://foo.com")!)
+        secureFrameMock = await WKFrameInfoMock(webView: secureWebviewMock, frameURL: URL(string: "https://foo.com")!)
         guard let jsonData = validMockPayloadJson.data(using: .utf8),
               let dictionary = try? JSONSerialization.jsonObject(
                 with: jsonData,

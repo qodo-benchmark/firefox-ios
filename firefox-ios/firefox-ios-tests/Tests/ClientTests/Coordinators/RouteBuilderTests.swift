@@ -8,9 +8,9 @@ import XCTest
 @MainActor
 final class RouteBuilderTests: XCTestCase {
     let testURL = URL(string: "https://example.com")
-    let handoffUserActivity = NSUserActivity(activityType: browsingActivityType)
-    let universalLinkUserActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
-    let randomActivity = NSUserActivity(activityType: "random")
+    var handoffUserActivity = NSUserActivity(activityType: browsingActivityType)
+    var universalLinkUserActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
+    var randomActivity = NSUserActivity(activityType: "random")
 
     override func setUp() async throws {
         try await super.setUp()
