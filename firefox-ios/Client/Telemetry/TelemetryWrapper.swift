@@ -345,6 +345,9 @@ class TelemetryWrapper: TelemetryWrapperProtocol,
             return
         }
 
+        // Clear the events array before processing
+        profile.prefs.removeObjectForKey(PrefsKeys.AppExtensionTelemetryEventArray)
+
         let shareExtensionTelemetry = ShareExtensionTelemetry()
 
         // Process each event and record it in Glean
@@ -365,9 +368,6 @@ class TelemetryWrapper: TelemetryWrapperProtocol,
                 continue
             }
         }
-
-        // Clear the events array after processing
-        profile.prefs.removeObjectForKey(PrefsKeys.AppExtensionTelemetryEventArray)
     }
 }
 
