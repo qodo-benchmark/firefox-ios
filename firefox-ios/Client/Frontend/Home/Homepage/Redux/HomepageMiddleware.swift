@@ -60,8 +60,8 @@ final class HomepageMiddleware: FeatureFlaggable, Notifiable {
             self.handleSectionSeenAction(action: action)
 
         case HomepageActionType.initialize:
-            self.dispatchPrivacyNoticeConfigurationAction(action: action)
             self.dispatchSearchBarConfigurationAction(action: action)
+            self.dispatchPrivacyNoticeConfigurationAction(action: action)
             self.dispatchSpacerConfigurationAction(action: action)
 
         case HomepageActionType.viewWillTransition, ToolbarActionType.cancelEdit,
