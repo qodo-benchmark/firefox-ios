@@ -51,7 +51,7 @@ final class WKUIHandlerTests: XCTestCase {
                         initiatedByFrame: frame,
                         type: .cameraAndMicrophone,
                         decisionHandler: decisionHandler)
-        wait(for: [expectation])
+        wait(for: [expectation], timeout: 2.0)
     }
 
     func testRequestMediaCaptureIsActiveFalse() {
@@ -76,8 +76,8 @@ final class WKUIHandlerTests: XCTestCase {
     }
 
     func testRequestMediaCaptureDelegateReturnsFalse() {
-        sessionDelegate.hasMediaCapturePermission = false
         let subject = createSubject(isActive: true)
+        sessionDelegate.hasMediaCapturePermission = false
         guard let (frame, origin) = WebKitTestHelpers.captureFrameAndOrigin(for: URL(string: "https://example.com")!) else {
             XCTFail("Could not obtain WKFrameInfo")
             return
