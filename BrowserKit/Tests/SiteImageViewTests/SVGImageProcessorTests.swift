@@ -39,7 +39,7 @@ class SVGImageProcessorTests: XCTestCase, @unchecked Sendable {
             }
         }
 
-        wait(for: [exp], timeout: 2.0)
+        await fulfillment(of: [exp], timeout: 2.0)
     }
 
     /// FXIOS-11361: Tests a special SVG which previously caused crashes in older versions of SwiftDraw.
