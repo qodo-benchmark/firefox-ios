@@ -280,7 +280,6 @@ final class RouteBuilder: FeatureFlaggable, @unchecked Sendable {
 
     private func sendAppExtensionTelemetry(object: TelemetryWrapper.EventObject) {
         if prefs?.boolForKey(PrefsKeys.AppExtensionTelemetryOpenUrl) != nil {
-            prefs?.removeObjectForKey(PrefsKeys.AppExtensionTelemetryOpenUrl)
             switch object {
             case .url:
                 shareExtensionTelemetry.shareURL()
@@ -289,6 +288,7 @@ final class RouteBuilder: FeatureFlaggable, @unchecked Sendable {
             default:
                 break
             }
+            prefs?.removeObjectForKey(PrefsKeys.AppExtensionTelemetryOpenUrl)
         }
     }
 }
