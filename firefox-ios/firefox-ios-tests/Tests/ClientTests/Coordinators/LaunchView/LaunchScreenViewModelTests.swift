@@ -472,7 +472,7 @@ final class LaunchScreenViewModelTests: XCTestCase {
             return
         }
 
-        switch (saved, expected) {
+        switch (expected, saved) {
         case (.intro, .intro),
              (.termsOfService, .termsOfService),
              (.update, .update),

