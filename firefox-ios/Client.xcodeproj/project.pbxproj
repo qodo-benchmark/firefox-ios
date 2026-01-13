@@ -2010,6 +2010,7 @@
 		E4D6BEB91A0930EC00F538BD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D6BEB81A0930EC00F538BD /* LaunchScreen.xib */; };
 		E4E25CCB1CA99E7400D0F088 /* HexExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E25CCA1CA99E7400D0F088 /* HexExtensionsTests.swift */; };
 		E4E7EB6D1C4AED5E0094275D /* SupportUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E7EB6C1C4AED5E0094275D /* SupportUtilsTests.swift */; };
+		E521904A2EF03E6A0006D19E /* ActionExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E52190492EF03E6A0006D19E /* ActionExtensionKit */; };
 		E571EE7E28756A130051D9AA /* StoryProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E571EE79287569960051D9AA /* StoryProviderTests.swift */; };
 		E58368AA287D632F0087A449 /* StoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58368A9287D632F0087A449 /* StoryProvider.swift */; };
 		E5A75E7C2EBE31580028C9DF /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = E5A75E7B2EBE31580028C9DF /* Common */; };
@@ -11440,6 +11441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CF609272EA8D46E00F069B6 /* UniformTypeIdentifiers.framework in Frameworks */,
+				E521904A2EF03E6A0006D19E /* ActionExtensionKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16746,6 +16748,7 @@
 			);
 			name = ActionExtension;
 			packageProductDependencies = (
+				E52190492EF03E6A0006D19E /* ActionExtensionKit */,
 			);
 			productName = ActionExtension;
 			productReference = 8CF609252EA8D46E00F069B6 /* ActionExtension.appex */;
@@ -18987,7 +18990,6 @@
 				8A89046D2D52874600A5BB29 /* SyncedTabCell.swift in Sources */,
 				8A4490952BF3C42B00E7E682 /* MicrosurveyConfirmationView.swift in Sources */,
 				1DA6F6512B48B42900BB5AD6 /* WindowEventCoordinator.swift in Sources */,
-				ED07C0E62CCACD7E006C0627 /* Locale+possibilitiesForLanguageIdentifier.swift in Sources */,
 				437A857827E43FE100E42764 /* FxAWebViewTelemetry.swift in Sources */,
 				613489A32D942A020009AF01 /* ToastTelemetry.swift in Sources */,
 				C7F051692DB2F38000EC52C0 /* ContextMenuPreviewViewController.swift in Sources */,
@@ -31558,6 +31560,10 @@
 		E177989F2BD8043800F6F0EB /* ToolbarKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ToolbarKit;
+		};
+		E52190492EF03E6A0006D19E /* ActionExtensionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ActionExtensionKit;
 		};
 		E5A75E7B2EBE31580028C9DF /* Common */ = {
 			isa = XCSwiftPackageProductDependency;
