@@ -11,7 +11,7 @@ import Common
 class DownloadProgressManagerTests: XCTestCase {
     override func setUp() async throws {
         try await super.setUp()
-        DependencyHelperMock().bootstrapDependencies()
+        await DependencyHelperMock().bootstrapDependencies()
     }
 
     override func tearDown() async throws {

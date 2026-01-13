@@ -13,7 +13,7 @@ class DownloadsPanelTests: XCTestCase {
     override func setUp() async throws {
         try await super.setUp()
         LegacyFeatureFlagsManager.shared.initializeDeveloperFeatures(with: MockProfile())
-        DependencyHelperMock().bootstrapDependencies()
+        await DependencyHelperMock().bootstrapDependencies()
     }
 
     override func tearDown() async throws {
