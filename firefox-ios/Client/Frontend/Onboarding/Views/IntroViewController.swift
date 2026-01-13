@@ -335,6 +335,7 @@ extension IntroViewController: OnboardingCardDelegate {
             /// setting a default browser action. TBD if the above code even still fires.
             introViewModel.chosenOptions.insert(.setAsDefaultBrowser)
             introViewModel.updateOnboardingUserActivationEvent()
+            registerForNotification()
             presentDefaultBrowserPopup(
                 windowUUID: windowUUID,
                 from: cardName,

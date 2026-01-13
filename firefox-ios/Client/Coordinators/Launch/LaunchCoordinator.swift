@@ -315,8 +315,8 @@ final class LaunchCoordinator: BaseCoordinator,
 
         flowViewModel.onDismiss = { [weak self] cardName in
             guard let self = self else { return }
-            telemetryUtility.sendDismissOnboardingTelemetry(from: cardName)
             self.onboardingService = nil
+            telemetryUtility.sendDismissOnboardingTelemetry(from: cardName)
         }
 
         let view = OnboardingView<OnboardingKitCardInfoModel>(

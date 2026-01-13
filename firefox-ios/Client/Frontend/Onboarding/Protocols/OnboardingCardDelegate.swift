@@ -110,12 +110,12 @@ extension OnboardingCardDelegate where Self: OnboardingViewControllerProtocol,
             viewModel: popupViewModel,
             windowUUID: windowUUID,
             buttonTappedFinishFlow: { [weak self] in
-                self?.viewModel.telemetryUtility.sendGoToSettingsButtonTappedTelemetry()
                 self?.advance(
                     numberOfPages: 1,
                     from: name,
                     completionIfLastCard: completionIfLastCard
                 )
+                self?.viewModel.telemetryUtility.sendGoToSettingsButtonTappedTelemetry()
             }
         )
 

