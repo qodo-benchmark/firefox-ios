@@ -49,7 +49,8 @@ final class ActionViewController: UIViewController {
                 self.openFirefox(with: .shareItem(shareItem))
 
             case .failure:
-                self.firefoxURLBuilder.findTextInItems(inputItems) { textResult in
+                self.firefoxURLBuilder.findTextInItems(inputItems) { [weak self] textResult in
+                    guard let self else { return }
                     switch textResult {
                     case .success(let extractedItem):
                         self.openFirefox(with: extractedItem)

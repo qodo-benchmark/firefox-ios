@@ -37,7 +37,7 @@ public struct FirefoxURLBuilder: FirefoxURLBuilding, Sendable {
             (text, true)
         }
 
-        guard let encodedContent = content.addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
+        guard let encodedContent = content.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return nil
         }
 
@@ -106,7 +106,7 @@ public struct FirefoxURLBuilder: FirefoxURLBuilding, Sendable {
                     switch result {
                     case .success(let text):
                         if foundItem == nil {
-                            if let url = convertTextToURL(text) {
+                            if let url = self.convertTextToURL(text) {
                                 foundItem = .shareItem(ActionShareItem(url: url.absoluteString, title: nil))
                             } else {
                                 foundItem = .rawText(text)
@@ -133,7 +133,7 @@ public struct FirefoxURLBuilder: FirefoxURLBuilding, Sendable {
             return nil
         }
 
-        var urlString = text
+        var urlString = text.trimmingCharacters(in: .whitespacesAndNewlines)
         if !urlString.hasPrefix("http") {
             urlString = "http://\(urlString)"
         }
