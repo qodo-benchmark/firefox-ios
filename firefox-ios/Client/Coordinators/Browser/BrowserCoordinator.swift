@@ -1124,7 +1124,7 @@ class BrowserCoordinator: BaseCoordinator,
             windowUUID: windowUUID,
             themeManager: themeManager
         )
-        linkVC.modalPresentationStyle = .pageSheet
+        linkVC.modalPresentationStyle = .fullScreen
         router.present(linkVC, animated: true)
     }
 
