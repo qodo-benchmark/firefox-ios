@@ -158,7 +158,6 @@ class LoginsHelper: @unchecked Sendable, TabContentScript, FeatureFlaggable {
             let tab = self.tab,
             !tab.isPrivate,
             profile.prefs.boolForKey("saveLogins") ?? true {
-            let userDefaults = UserDefaults.standard
             let showPasswordGeneratorClosure = {
                 let newAction = GeneralBrowserAction(
                     frameContext: frameContext,
@@ -167,8 +166,8 @@ class LoginsHelper: @unchecked Sendable, TabContentScript, FeatureFlaggable {
 
                 store.dispatch(newAction)
             }
-            if userDefaults.value(forKey: PrefsKeys.PasswordGeneratorShown) == nil {
-                userDefaults.set(true, forKey: PrefsKeys.PasswordGeneratorShown)
+            if UserDefaults.standard.value(forKey: PrefsKeys.PasswordGeneratorShown) == nil {
+                UserDefaults.standard.set(true, forKey: PrefsKeys.PasswordGeneratorShown)
                 showPasswordGeneratorClosure()
             } else {
                 tab.webView?.accessoryView.useStrongPasswordClosure = showPasswordGeneratorClosure
