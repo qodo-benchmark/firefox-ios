@@ -50,12 +50,11 @@ final class TermsOfUseCoordinator: BaseCoordinator, TermsOfUseCoordinatorDelegat
     init(windowUUID: WindowUUID,
          router: Router,
          themeManager: ThemeManager = AppContainer.shared.resolve(),
-         notificationCenter: NotificationProtocol = NotificationCenter.default,
          prefs: Prefs,
          nimbus: FxNimbus = FxNimbus.shared) {
         self.windowUUID = windowUUID
         self.themeManager = themeManager
-        self.notificationCenter = notificationCenter
+        self.notificationCenter = NotificationCenter.default
         self.prefs = prefs
         self.nimbus = nimbus
         super.init(router: router)
