@@ -23,8 +23,6 @@ public struct TermsOfUseView<ViewModel: OnboardingCardInfoModelProtocol>: View {
         self.themeManager = themeManager
     }
 
-    // MARK: - Body
-
     public var body: some View {
         Group {
             if horizontalSizeClass == .regular {
@@ -35,7 +33,6 @@ public struct TermsOfUseView<ViewModel: OnboardingCardInfoModelProtocol>: View {
         }
     }
 
-    // MARK: - Regular Layout
     private var termsOfUseViewRegular: some View {
         TermsOfUseRegularView(
             viewModel: viewModel,
@@ -44,7 +41,6 @@ public struct TermsOfUseView<ViewModel: OnboardingCardInfoModelProtocol>: View {
         )
     }
 
-    // MARK: - Compact Layout
     private var termsOfUseViewCompact: some View {
         TermsOfUseCompactView(
             viewModel: viewModel,
