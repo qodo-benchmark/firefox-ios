@@ -23,6 +23,9 @@ final class CuratedRecommendationCacheUtilityTests: XCTestCase {
 
         cache.save(recs)
 
+        // Verify file was created
+        XCTAssertTrue(FileManager.default.fileExists(atPath: testFileURL.path))
+
         let loaded = cache.loadRecommendations()
         XCTAssertEqual(loaded?.count, 2)
         XCTAssertEqual(loaded?.first?.title, "Title 1")
