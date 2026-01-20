@@ -94,7 +94,7 @@ class LabelButtonHeaderView: UICollectionReusableView,
 
     func configure(
         state: SectionHeaderConfiguration,
-        moreButtonAction: (@Sendable @MainActor (UIButton) -> Void)? = nil,
+        moreButtonAction: (@Sendable @MainActor (UIButton) -> Void)? = nil, // Updated to support Swift 6 concurrency requirements
         textColor: UIColor?,
         theme: Theme
     ) {
