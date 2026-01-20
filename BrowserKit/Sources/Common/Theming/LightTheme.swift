@@ -9,6 +9,10 @@ public struct LightTheme: Theme {
     public var colors: ThemeColourPalette = LightColourPalette()
 
     public init() {}
+
+    public var criticalColors: (primary: UIColor, subdued: UIColor) {
+        return (colors.layerCritical, colors.layerCriticalSubdued)
+    }
 }
 
 private struct LightColourPalette: ThemeColourPalette {
