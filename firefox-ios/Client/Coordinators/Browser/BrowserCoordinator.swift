@@ -381,6 +381,12 @@ class BrowserCoordinator: BaseCoordinator,
         // sent to one particular window, but for this action we want to close tabs
         // for all open windows, so we route this message to the WindowManager.
         windowManager.performMultiWindowAction(.closeAllPrivateTabs)
+
+        // Post notification to inform other components
+        NotificationCenter.default.post(
+            name: Notification.Name("PrivateTabsClosed"),
+            object: nil
+        )
     }
 
     private func handle(homepanelSection section: Route.HomepanelSection) {
