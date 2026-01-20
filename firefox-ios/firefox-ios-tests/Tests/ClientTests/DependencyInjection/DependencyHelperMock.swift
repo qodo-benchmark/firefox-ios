@@ -16,6 +16,12 @@ final class DependencyHelperMock {
     ) {
         AppContainer.shared.reset()
 
+        // Ensure temporary directory exists for tests
+        let tempDir = FileManager.default.temporaryDirectory
+        if !FileManager.default.fileExists(atPath: tempDir.path) {
+            try? FileManager.default.createDirectory(at: tempDir, withIntermediateDirectories: true)
+        }
+
         let profile: Profile = BrowserProfile(
             localName: "profile"
         )
