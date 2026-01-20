@@ -126,7 +126,9 @@ final class UnifiedAdsProvider: URLCaching, UnifiedAdsProviderInterface, Feature
                 // FXIOS-10798 - URLCache doesn't retrieve from cache if there's an httpBody set on the request
                 var cacheRequest = request
                 cacheRequest.httpBody = nil
-                self.cache(response: result.response, for: cacheRequest, with: result.data)
+                // Cache the response using URLCache directly
+                let cachedResponse = CachedURLResponse(response: result.response, data: result.data)
+                URLCache.shared.storeCachedResponse(cachedResponse, for: cacheRequest)
                 self.decode(data: result.data, completion: completion)
             case .failure:
                 completion(.failure(Error.noDataAvailable))
