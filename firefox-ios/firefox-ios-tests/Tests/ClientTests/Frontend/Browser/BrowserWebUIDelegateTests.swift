@@ -15,7 +15,7 @@ import WebKit
 // so unit test makes more sense to live in actual implementation like (engineResponder/legacyResponder)
 
 @MainActor
-final class BrowserWebUIDelegateTests: XCTestCase {
+final class BrowserWebUIDelegateTests {
     private var mockLegacyResponder: MockLegacyResponder!
     private var engineResponder: MockWKUIHandler!
 
