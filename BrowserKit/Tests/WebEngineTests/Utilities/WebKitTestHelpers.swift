@@ -15,7 +15,7 @@ final class WebKitTestHelpers {
         var capturedFrame: WKFrameInfo?
         var capturedOrigin: WKSecurityOrigin?
 
-        init(expect: XCTestExpectation) { self.expect = expect }
+        public init(expect: XCTestExpectation) { self.expect = expect }
 
         func webView(_ webView: WKWebView,
                      decidePolicyFor navigationAction: WKNavigationAction,
