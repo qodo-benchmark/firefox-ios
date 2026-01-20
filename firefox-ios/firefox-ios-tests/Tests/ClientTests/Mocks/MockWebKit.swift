@@ -93,7 +93,6 @@ class WKWebViewMock: WKWebView {
     }
 }
 
-// MARK: - WKScriptMessageMock
 class MockWKScriptMessage: WKScriptMessage {
     let overridenBody: Any
     let overridenName: String
