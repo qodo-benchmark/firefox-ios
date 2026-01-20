@@ -137,10 +137,21 @@ final class TermsOfUseViewController: UIViewController,
         titleLabel.text = strings.titleText
         setupUI()
 
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAppWillResignActive),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
         listenForThemeChanges(withNotificationCenter: notificationCenter)
         applyTheme()
 
         subscribeToRedux()
+    }
+
+    @objc private func handleAppWillResignActive() {
+        // Track when the app goes to background while Terms of Use is displayed
+        store.dispatch(TermsOfUseAction(windowUUID: windowUUID, actionType: .remindMeLaterTapped))
     }
 
     override func viewDidAppear(_ animated: Bool) {
