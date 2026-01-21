@@ -17,9 +17,9 @@ final class BaseCoordinatorTests: XCTestCase {
     }
 
     override func tearDown() async throws {
+        try await super.tearDown()
         navigationController = nil
         router = nil
-        try await super.tearDown()
     }
 
     func testAddChild() {

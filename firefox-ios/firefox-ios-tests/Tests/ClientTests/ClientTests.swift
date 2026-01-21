@@ -24,6 +24,7 @@ class ClientTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testMobileUserAgent() {
         let compare: (String) -> Bool = { ua in
             let range = ua.range(

