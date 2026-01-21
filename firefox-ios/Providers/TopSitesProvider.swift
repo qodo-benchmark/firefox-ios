@@ -94,7 +94,6 @@ class TopSitesProviderImplementation: @MainActor TopSitesProvider, FeatureFlagga
     }
 }
 
-// MARK: Private
 private extension TopSitesProviderImplementation {
     func getFrecencySites(group: DispatchGroup, numberOfMaxItems: Int) {
         group.enter()
