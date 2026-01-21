@@ -270,13 +270,15 @@ final class LaunchCoordinator: BaseCoordinator,
             skipText: .Onboarding.LaterAction,
             onActionTap: { [weak self] action, cardName, completion in
                 guard let onboardingService = self?.onboardingService else { return }
-                onboardingService.handleAction(
-                    action,
-                    from: cardName,
-                    cards: onboardingModel.cards,
-                    with: activityEventHelper,
-                    completion: completion
-                )
+                Task {
+                    onboardingService.handleAction(
+                        action,
+                        from: cardName,
+                        cards: onboardingModel.cards,
+                        with: activityEventHelper,
+                        completion: completion
+                    )
+                }
             },
             onMultipleChoiceActionTap: { [weak self] action, cardName in
                 guard let onboardingService = self?.onboardingService else { return }

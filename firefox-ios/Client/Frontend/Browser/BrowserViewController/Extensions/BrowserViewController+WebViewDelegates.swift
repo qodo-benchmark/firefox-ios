@@ -197,7 +197,7 @@ extension BrowserViewController: WKUIDelegate {
 
     // MARK: - Helpers
 
-    private func handleSpammedJSAlert(_ callback: @escaping @MainActor @Sendable () -> Void) {
+    private func handleSpammedJSAlert(_ callback: @escaping () -> Void) {
         // User is being spammed. Squelch alert. Note that we have to do this after
         // a delay to avoid JS that could spin the CPU endlessly.
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { callback() }
