@@ -44,7 +44,7 @@ class ShareLongPressTests: FeatureFlaggedTestBase {
     }
 
     // https://mozilla.testrail.io/index.php?/cases/view/2864380
-    func testBookmarksShareNormalWebsiteReminders() {
+    func verifyBookmarksShareNormalWebsiteReminders() {
         app.launch()
         if #available(iOS 17, *) {
             longPressBookmarkAndReachShareOptions(option: "Reminders")
