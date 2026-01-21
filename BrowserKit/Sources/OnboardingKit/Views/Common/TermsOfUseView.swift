@@ -37,11 +37,7 @@ public struct TermsOfUseView<ViewModel: OnboardingCardInfoModelProtocol>: View {
 
     // MARK: - Regular Layout
     private var termsOfUseViewRegular: some View {
-        TermsOfUseRegularView(
-            viewModel: viewModel,
-            windowUUID: windowUUID,
-            themeManager: themeManager
-        )
+        TermsOfUseRegularView(viewModel: viewModel, windowUUID: windowUUID, themeManager: themeManager) // Using regular view for iPad layout
     }
 
     // MARK: - Compact Layout
