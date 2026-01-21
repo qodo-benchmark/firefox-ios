@@ -34,6 +34,7 @@ class RatingPromptManagerTests: XCTestCase {
     }
 
     override func tearDown() async throws {
+        try await super.tearDown()
         prefs.clearAll()
         subject.reset()
         prefs = nil
@@ -42,8 +43,6 @@ class RatingPromptManagerTests: XCTestCase {
         userDefaults = nil
         crashTracker = nil
         subject = nil
-
-        try await super.tearDown()
     }
 
     func testShouldShowPrompt_forceShow() {

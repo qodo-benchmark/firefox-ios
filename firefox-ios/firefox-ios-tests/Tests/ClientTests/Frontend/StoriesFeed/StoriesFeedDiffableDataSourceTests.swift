@@ -26,10 +26,10 @@ final class StoriesFeedDiffableDataSourceTests: XCTestCase {
     }
 
     override func tearDown() async throws {
+        try await super.tearDown()
         diffableDataSource = nil
         collectionView = nil
         DependencyHelperMock().reset()
-        try await super.tearDown()
     }
 
     func test_updateSnapshot_initialSnapshotHasNoData() throws {

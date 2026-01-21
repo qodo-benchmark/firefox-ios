@@ -8,7 +8,6 @@ import Shared
 
 @testable import Client
 
-@MainActor
 class EditBookmarkViewModelTests: XCTestCase {
     let folder = MockFxBookmarkNode(type: .folder,
                                     guid: "1235",
