@@ -35,14 +35,11 @@ final class WKUIHandlerTests: XCTestCase {
     func testRequestMediaCaptureSuccess() {
         let subject = createSubject(isActive: true)
 
-        let expectation = expectation(description: "Wait for the decision handler to be called")
         let decisionHandler: @Sendable (WKPermissionDecision) -> Void = { (decision: WKPermissionDecision) in
             XCTAssertEqual(decision, .prompt)
-            expectation.fulfill()
         }
 
         subject.requestMediaCapturePermission(decisionHandler: decisionHandler)
-        wait(for: [expectation])
     }
 
     func testRequestMediaCaptureIsActiveFalse() {

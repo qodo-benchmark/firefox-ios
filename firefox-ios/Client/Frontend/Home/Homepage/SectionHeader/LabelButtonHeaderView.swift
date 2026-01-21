@@ -103,10 +103,13 @@ class LabelButtonHeaderView: UICollectionReusableView,
 
         moreButton.isHidden = state.isButtonHidden
         if !state.isButtonHidden {
+            let wrappedAction: (@MainActor (UIButton) -> Void)? = { button in
+                moreButtonAction?(button)
+            }
             let moreButtonViewModel = ActionButtonViewModel(
                 title: state.buttonTitle ?? .BookmarksSavedShowAllText,
                 a11yIdentifier: state.buttonA11yIdentifier,
-                touchUpAction: moreButtonAction
+                touchUpAction: wrappedAction
             )
             moreButton.configure(
                 viewModel: moreButtonViewModel

