@@ -1340,9 +1340,7 @@ private extension BrowserViewController {
                   let cert = SecTrustCopyCertificateChain(trust) as? [SecCertificate],
                   self.profile.certStore.containsCertificate(cert[0], forOrigin: origin)
             else {
-                ensureMainThread {
-                    completionHandler(.performDefaultHandling, nil)
-                }
+                completionHandler(.performDefaultHandling, nil)
                 return
             }
 

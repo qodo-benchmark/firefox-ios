@@ -19,14 +19,15 @@ public func ensureMainThread(execute work: @escaping @MainActor @convention(bloc
     }
 }
 
-public func ensureMainThread<T>(execute work: @escaping @MainActor () -> T) {
+public func ensureMainThread<T>(execute work: @escaping @MainActor () -> T) -> T? {
     if Thread.isMainThread {
-        MainActor.assumeIsolated {
-            _ = work()
+        return MainActor.assumeIsolated {
+            return work()
         }
     } else {
         DispatchQueue.main.async {
             _ = work()
         }
+        return nil
     }
 }
