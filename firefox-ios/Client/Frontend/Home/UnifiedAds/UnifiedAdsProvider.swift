@@ -28,7 +28,7 @@ final class UnifiedAdsProvider: URLCaching, UnifiedAdsProviderInterface, Feature
     private static let prodResourceEndpoint = "https://ads.mozilla.org/v1/ads"
     static let stagingResourceEndpoint = "https://ads.allizom.org/v1/ads"
     let maxCacheAge: Timestamp = OneMinuteInMilliseconds * 30
-    let urlCache: URLCache
+    private let urlCache: URLCache
     private let logger: Logger
     private let networking: ContileNetworking
 
