@@ -15,7 +15,7 @@ protocol WebServerProtocol {
 
 /// FIXME: FXIOS-13989 Make truly thread safe
 /// NOTE: FXIOS-14560 -- Be careful; `@MainActor` will cause crashes with GCDWebServer dependency.
-final class WebServer: WebServerProtocol, @unchecked Sendable {
+class WebServer: WebServerProtocol, @unchecked Sendable {
     static let sharedInstance = WebServer()
 
     private let logger: Logger
