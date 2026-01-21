@@ -152,8 +152,8 @@ class HomePageSettingsUITests: FeatureFlaggedTestBase {
         XCTAssertTrue(app.switches["Shortcuts"].exists)
         app.switches["Shortcuts"].waitAndTap()
 
-        navigator.goto(NewTabScreen)
         app.buttons["Done"].waitAndTap()
+        navigator.goto(NewTabScreen)
 
         mozWaitForElementToNotExist(app.links[AccessibilityIdentifiers.FirefoxHomepage.TopSites.itemCell])
         mozWaitForElementToNotExist(app.collectionViews.cells.staticTexts["YouTube"])

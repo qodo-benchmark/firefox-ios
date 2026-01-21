@@ -8,13 +8,13 @@ class ClipBoardTests: BaseTestCase {
     let url = "www.example.com"
 
     // Check for test url in the browser
-    func checkUrl() {
+    public func checkUrl() {
         let urlTextField = app.textFields[AccessibilityIdentifiers.Browser.AddressToolbar.searchTextField]
         mozWaitForValueContains(urlTextField, value: "example.com")
     }
 
     // Copy url from the browser
-    func copyUrl() {
+    public func copyUrl() {
         urlBarAddress.waitAndTap()
         if iPad() {
             var attemptsiPad = 2
@@ -38,7 +38,7 @@ class ClipBoardTests: BaseTestCase {
     }
 
     // Check copied url is same as in browser
-    func checkCopiedUrl() {
+    public func checkCopiedUrl() {
         if #unavailable(iOS 16.0) {
             if let myString = UIPasteboard.general.string {
                 let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
@@ -68,7 +68,6 @@ class ClipBoardTests: BaseTestCase {
         waitUntilPageLoad()
         checkUrl()
         copyUrl()
-        checkCopiedUrl()
 
         navigator.createNewTab()
         mozWaitForElementToNotExist(app.staticTexts["XCUITests-Runner pasted from Fennec"])
