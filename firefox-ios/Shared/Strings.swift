@@ -6258,7 +6258,7 @@ extension String {
         key: "Settings.Rollouts.Message.v148",
         tableName: "Settings",
         value: "%@ will improve features, performance, and stability between updates. Changes applied remotely.",
-        comment: "A short description that explains that Mozilla may change features remotely. %@ is the app name (e.g. Firefox).")
+        comment: "A short description that explains that Mozilla may change features remotely. %1$@ is the app name (e.g. Firefox).")
     public static let SettingsSiriSectionName = MZLocalizedString(
         key: "Settings.Siri.SectionName",
         tableName: nil,

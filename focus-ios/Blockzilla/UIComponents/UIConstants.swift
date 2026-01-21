@@ -413,4 +413,19 @@ struct UIConstants {
         static let googleAmpURLPrefix = "https://www.google.com/amp/s/"
         static let truncateLeader = "..."
     }
+
+    // Helper class for formatting Study and Rollout settings text for display
+    class SettingsTextFormatter {
+        static let shared = SettingsTextFormatter()
+
+        private init() {}
+
+        func formatStudiesText(appName: String) -> String {
+            return String(format: strings.detailTextStudies, appName)
+        }
+
+        func formatRolloutsText(appName: String) -> String {
+            return String(format: strings.detailTextRollouts, appName)
+        }
+    }
 }
