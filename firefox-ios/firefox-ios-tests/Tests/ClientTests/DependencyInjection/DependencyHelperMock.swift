@@ -7,6 +7,7 @@ import Storage
 @testable import Client
 
 final class DependencyHelperMock {
+
     @MainActor
     func bootstrapDependencies(
         injectedWindowManager: WindowManager? = nil,
