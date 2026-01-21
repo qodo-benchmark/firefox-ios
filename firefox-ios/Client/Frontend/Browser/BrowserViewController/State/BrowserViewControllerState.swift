@@ -563,7 +563,7 @@ struct BrowserViewControllerState: ScreenState {
             toast: state.toast,
             windowUUID: state.windowUUID,
             browserViewType: state.browserViewType,
-            displayView: .readerMode,
+            displayView: .readerModeLongPressAction,
             microsurveyState: MicrosurveyPromptState.reducer(state.microsurveyState, action))
     }
 

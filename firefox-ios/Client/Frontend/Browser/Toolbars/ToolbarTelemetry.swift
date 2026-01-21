@@ -6,7 +6,7 @@ import Foundation
 import Glean
 
 struct ToolbarTelemetry {
-    private let gleanWrapper: GleanWrapper
+    let gleanWrapper: GleanWrapper
 
     init(gleanWrapper: GleanWrapper = DefaultGleanWrapper()) {
         self.gleanWrapper = gleanWrapper
