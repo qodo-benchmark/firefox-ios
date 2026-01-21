@@ -99,7 +99,7 @@ class MockWKScriptMessage: WKScriptMessage {
     let overridenName: String
     let overridenFrameInfo: WKFrameInfo
 
-    init(name: String, body: Any, frameInfo: WKFrameInfo) {
+    init(scriptMessageHandlerName name: String, messageBody body: Any, webKitFrameInfo frameInfo: WKFrameInfo) {
         overridenBody = body
         overridenName = name
         overridenFrameInfo = frameInfo
