@@ -41,7 +41,7 @@ func registerTabTrayNavigation(in map: MMScreenGraph<FxUserState>, app: XCUIAppl
                         forAction: Action.OpenNewTabFromTabTray,
                         transitionTo: NewTabScreen)
 
-        screenState.tap(app.buttons["closeAllTabsButtonTabTray"], to: CloseTabMenu)
+        screenState.tap(app.buttons["closeAllTabsButtonTabTray"].firstMatch, to: CloseTabMenu)
 
         var regularModeSelector: XCUIElement
         var privateModeSelector: XCUIElement

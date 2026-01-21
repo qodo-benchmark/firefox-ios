@@ -389,7 +389,7 @@ class LoginTest: BaseTestCase {
         XCTAssertFalse(app.buttons["Edit"].isEnabled)
         XCTAssertTrue(app.buttons["Add"].isEnabled)
         createLoginManually()
-        if #unavailable(iOS 16) {
+        if #available(iOS 16, *) {
             mozWaitForElementToExist(app.tables[loginList].staticTexts.firstMatch)
         } else {
             mozWaitForElementToExist(app.tables[loginList].staticTexts["https://testweb"])
