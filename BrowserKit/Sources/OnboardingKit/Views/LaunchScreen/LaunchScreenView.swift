@@ -29,6 +29,13 @@ public class LaunchScreenLoaderView: UIView {
         $0.contentMode = .scaleAspectFit
     }
 
+    private let backgroundLayer: CALayer = {
+        let layer = CALayer()
+        layer.backgroundColor = UIColor.systemBackground.cgColor
+        layer.cornerRadius = 12
+        return layer
+    }()
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
@@ -39,8 +46,14 @@ public class LaunchScreenLoaderView: UIView {
     }
 
     private func setupLayout() {
+        layer.addSublayer(backgroundLayer)
         addSubview(imageView)
         imageView.pinToSuperview()
+    }
+
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        backgroundLayer.frame = bounds
     }
 
     public func startAnimating() {
