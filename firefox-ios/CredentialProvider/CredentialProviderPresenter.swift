@@ -8,7 +8,6 @@ import Common
 
 let CredentialProviderAuthenticationDelay = 0.25
 
-@MainActor
 final class CredentialProviderPresenter {
     weak var view: CredentialProviderViewProtocol?
     public let profile: Profile
