@@ -26,7 +26,7 @@ class OnboardingTests: BaseTestCase {
 
     override func tearDown() async throws {
         if #available(iOS 17.0, *) {
-            if self.name.contains("testSelectBottomPlacement") && iPad() {
+            if self.name.contains("testSelectBottomPlacement") || iPad() {
                 // Toolbar option not available for iPad, so the theme is not changed there.
                 return
             } else {

