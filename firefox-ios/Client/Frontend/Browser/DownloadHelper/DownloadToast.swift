@@ -7,10 +7,6 @@ import Shared
 import UIKit
 
 class DownloadToast: Toast, DownloadProgressDelegate {
-    struct UX {
-        static let buttonSize: CGFloat = 40
-    }
-
     lazy var progressView: UIView = .build { view in
         view.layer.cornerRadius = Toast.UX.toastCornerRadius
     }
@@ -193,8 +189,8 @@ class DownloadToast: Toast, DownloadProgressDelegate {
                 contentStackView.topAnchor.constraint(equalTo: toastView.topAnchor,
                                                       constant: ButtonToast.UX.spacing),
 
-                closeButton.heightAnchor.constraint(equalToConstant: UX.buttonSize),
-                closeButton.widthAnchor.constraint(equalToConstant: UX.buttonSize),
+                closeButton.heightAnchor.constraint(equalToConstant: 40),
+                closeButton.widthAnchor.constraint(equalToConstant: 40),
             ]
         )
 
