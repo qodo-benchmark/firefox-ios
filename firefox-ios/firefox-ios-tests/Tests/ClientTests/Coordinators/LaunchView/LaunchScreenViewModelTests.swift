@@ -16,7 +16,7 @@ final class LaunchScreenViewModelTests: XCTestCase {
 
     override func setUp() async throws {
         try await super.setUp()
-        await DependencyHelperMock().bootstrapDependencies()
+        DependencyHelperMock().bootstrapDependencies()
         profile = MockProfile()
         delegate = MockLaunchFinishedLoadingDelegate()
         LegacyFeatureFlagsManager.shared.initializeDeveloperFeatures(with: profile)

@@ -42,6 +42,7 @@ class TabManagerTests: XCTestCase {
     }
 
     override func tearDown() async throws {
+        DependencyHelperMock().reset()
         mockProfile = nil
         mockDiskImageStore = nil
         mockTabStore = nil
