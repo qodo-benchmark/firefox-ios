@@ -8,7 +8,7 @@ import Shared
 @testable import Client
 
 @MainActor
-final class HomePageActivityTests: XCTestCase {
+final class HomePageActivityTests {
     func testInit_withOnlineURL_returnsSameURL() {
         let urlString = "https://www.google.com"
         let url = URL(string: urlString)!
