@@ -75,7 +75,7 @@ extension XCTestCase {
         verify: ((E) -> Void)? = nil
     ) async {
         do {
-            _ = try await expression()
+            let result = try await expression()
             XCTFail("Expected error \(expectedType), but no error thrown.", file: file, line: line)
         } catch let error as E {
             verify?(error)
@@ -91,8 +91,13 @@ extension XCTestCase {
         file: StaticString = #filePath,
         line: UInt = #line
     ) async {
-        await assertAsyncThrows(ofType: E.self, expression, file: file, line: line) { error in
+        do {
+            _ = try await expression()
+            XCTFail("Expected error \(expected), but no error thrown.", file: file, line: line)
+        } catch let error as E {
             XCTAssertEqual(error, expected, file: file, line: line)
+        } catch {
+            XCTFail("Expected error \(expected), but got \(error)", file: file, line: line)
         }
     }
 }

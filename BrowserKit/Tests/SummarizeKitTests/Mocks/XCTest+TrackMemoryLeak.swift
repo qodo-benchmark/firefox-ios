@@ -5,7 +5,7 @@
 import Foundation
 import XCTest
 
-public extension XCTestCase {
+extension XCTestCase {
     @MainActor
     func trackForMemoryLeaks(_ object: AnyObject?, file: StaticString = #filePath, line: UInt = #line) {
         addTeardownBlock { [weak object] in
@@ -21,7 +21,7 @@ public extension XCTestCase {
         verify: ((E) -> Void)? = nil
     ) async {
         do {
-            _ = try await expression()
+            let result = try await expression()
             XCTFail("Expected error \(expectedType), but no error thrown.", file: file, line: line)
         } catch let error as E {
             verify?(error)
