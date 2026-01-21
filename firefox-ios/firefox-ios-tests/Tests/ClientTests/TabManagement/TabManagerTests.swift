@@ -207,8 +207,8 @@ class TabManagerTests: XCTestCase {
 
         subject.restoreTabs()
 
-        AppEventQueue.wait(for: .tabRestoration(testUUID)) { [tabs = subject.tabs, mockTabStore] in
-            XCTAssertEqual(tabs.count, 4)
+        AppEventQueue.wait(for: .tabRestoration(testUUID)) { [weak subject, mockTabStore] in
+            XCTAssertEqual(subject?.tabs.count, 4)
             XCTAssertEqual(mockTabStore?.fetchWindowDataCalledCount, 1)
             expectation.fulfill()
         }

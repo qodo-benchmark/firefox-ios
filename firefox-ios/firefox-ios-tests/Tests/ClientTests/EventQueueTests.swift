@@ -297,8 +297,8 @@ final class EventQueueTests: XCTestCase {
     // This tests an edge case bug that can cause actions to not be executed correctly.
     func testEnqueuingActionDuringProcessingWhoseDependenciesAreSatisfiedWillBeRunCorrectly() {
         let expectation = XCTestExpectation(description: "Nested action expectation.")
-        queue.wait(for: [.startingEvent, .laterEvent], then: { [queue] in
-            queue?.wait(for: [.startingEvent, .laterEvent], then: {
+        queue.wait(for: [.startingEvent, .laterEvent], then: {
+            self.queue.wait(for: [.startingEvent, .laterEvent], then: {
                 expectation.fulfill()
             })
         })

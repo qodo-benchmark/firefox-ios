@@ -276,10 +276,10 @@ final class BookmarksPanelViewModelTests: XCTestCase, FeatureFlaggable {
             title: "Firefox",
             position: 0
         ).uponQueue(.main) { [profile] _ in
-            profile.places.countBookmarksInTrees(folderGuids: [BookmarkRoots.MenuFolderGUID]) { result in
+            profile.places.countBookmarksInTrees(folderGuids: [BookmarkRoots.MenuFolderGUID]) { [weak subject] result in
                 switch result {
                 case .success:
-                    subject.reloadData {
+                    subject?.reloadData {
                         completion()
                         expectation.fulfill()
                     }
