@@ -43,11 +43,11 @@ final class SummarizeViewModelTests: XCTestCase, @unchecked Sendable {
     }
 
     override func tearDown() async throws {
+        try await super.tearDown()
         tosAcceptor = nil
         dateProvider = nil
         summarizerService = nil
         webView = nil
-        try await super.tearDown()
     }
 
     func test_summarize_whenTosNotAccepted_whenTriggerIsShake_showsToSScreen() {

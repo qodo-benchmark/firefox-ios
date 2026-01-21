@@ -19,8 +19,8 @@ final class SummarizerServiceTests: XCTestCase {
     }
 
     override func tearDown() async throws {
-        mockWebView = nil
         try await super.tearDown()
+        mockWebView = nil
     }
 
     func testSummarizerServiceReturnsSummary() async throws {
@@ -105,7 +105,6 @@ final class SummarizerServiceTests: XCTestCase {
         )
     }
 
-    /// Convenience method to simplify error checking in the test cases
     private func assertSummarizeThrows(
         _ expected: SummarizerError,
         when running: @escaping () async throws -> Void

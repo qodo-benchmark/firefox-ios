@@ -88,13 +88,13 @@ final class SummarizeControllerTests: XCTestCase, @unchecked Sendable {
     private let maxWords = 5000
 
     override func setUp() async throws {
-        try await super.setUp()
         UIView.setAnimationsEnabled(false)
         summarizer = MockSummarizer(shouldRespond: ["Response"], shouldThrowError: nil)
         navigationHandler = MockSummarizeNavigationHandler()
         webView = MockWebView(URL(string: "https://www.example.com")!)
         viewModel = MockSummarizeViewModel()
         AppContainer.shared.register(service: DefaultThemeManager(sharedContainerIdentifier: "") as ThemeManager)
+        try await super.setUp()
     }
 
     override func tearDown() async throws {
