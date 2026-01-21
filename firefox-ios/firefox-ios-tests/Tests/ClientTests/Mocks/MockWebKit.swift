@@ -20,7 +20,7 @@ class MockWKFrameInfo: WKFrameInfo {
     let overridenWebView: WKWebView?
     let overridenTargetFrame: Bool
 
-    init(webView: WKWebViewMock? = nil, frameURL: URL? = nil, isMainFrame: Bool? = false) {
+    init(webView: WKWebViewMock? = nil, frameURL: URL? = nil, isMainFrame: Bool? = true) {
         overridenSecurityOrigin = WKSecurityOriginMock.new(frameURL)
         overridenWebView = webView
         overridenTargetFrame = isMainFrame ?? false
@@ -99,7 +99,7 @@ class MockWKScriptMessage: WKScriptMessage {
     let overridenName: String
     let overridenFrameInfo: WKFrameInfo
 
-    init(name: String, body: Any, frameInfo: WKFrameInfo) {
+    init(scriptMessageHandlerName name: String, messageBody body: Any, webKitFrameInfo frameInfo: WKFrameInfo) {
         overridenBody = body
         overridenName = name
         overridenFrameInfo = frameInfo

