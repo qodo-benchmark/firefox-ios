@@ -508,7 +508,7 @@ class IpadOnlyTestCase: BaseTestCase {
     override func setUp() async throws {
         specificForPlatform = .pad
         if iPad() {
-            try await super.setUp()
+            await super.setUp()
         }
     }
 }

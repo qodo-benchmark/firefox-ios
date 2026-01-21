@@ -45,8 +45,8 @@ class FeatureFlaggedTestSuite: FeatureFlaggedTestBase {
 
     override func setUp() async throws {
         continueAfterFailure = false
-        setUpExperimentVariables()
         setUpApp()
+        setUpExperimentVariables()
         setUpLaunchArguments()
         setUpScreenGraph()
     }

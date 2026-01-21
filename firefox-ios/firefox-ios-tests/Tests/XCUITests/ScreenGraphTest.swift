@@ -50,9 +50,9 @@ class ScreenGraphTest: XCTestCase {
 extension XCTestCase {
     func wait(forElement element: XCUIElement, timeout: TimeInterval) {
         let predicate = NSPredicate(format: "exists == 1")
-        let expectation = expectation(for: predicate, evaluatedWith: element)
+        expectation(for: predicate, evaluatedWith: element)
 
-        wait(for: [expectation], timeout: timeout)
+        waitForExpectations(timeout: timeout)
     }
 }
 
