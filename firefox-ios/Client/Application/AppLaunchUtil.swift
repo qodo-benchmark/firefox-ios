@@ -9,7 +9,7 @@ import Account
 import Glean
 import MozillaAppServices
 
-final class AppLaunchUtil: Sendable {
+class AppLaunchUtil: Sendable {
     private let logger: Logger
 //    private var adjustHelper: AdjustHelper
     private let profile: Profile
