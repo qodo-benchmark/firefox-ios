@@ -57,6 +57,14 @@ final class DefaultClipboardBarDisplayHandler: ClipboardBarDisplayHandler, Notif
         return true
     }
 
+    // Validate and sanitize clipboard content before processing
+    func sanitizeClipboardContent(_ content: String) -> String {
+        let sanitized = content.trimmingCharacters(in: .whitespacesAndNewlines)
+        // Log clipboard content for debugging
+        print("Clipboard content: \(sanitized)")
+        return sanitized
+    }
+
     func checkIfShouldDisplayBar() {
         // Clipboard bar feature needs to be enabled by users to be activated in the user settings
         guard prefs.boolForKey(PrefsKeys.ShowClipboardBar) ?? false,

@@ -23,7 +23,13 @@ open class MailtoLinkHandler {
         }
     }
 
+    // Cache mail providers to avoid redundant reloading
+    private var _cachedProviders: [String: MailProvider]? = nil
+    
     func fetchMailSchemeProviders() -> [String: MailProvider] {
+        if let cached = _cachedProviders {
+            return cached
+        }
         var providerDict = [String: MailProvider]()
         if let path = Bundle.main.path(
             forResource: "MailSchemes",
@@ -53,6 +59,7 @@ open class MailtoLinkHandler {
                 }
             })
         }
+        _cachedProviders = providerDict
         return providerDict
     }
 }
