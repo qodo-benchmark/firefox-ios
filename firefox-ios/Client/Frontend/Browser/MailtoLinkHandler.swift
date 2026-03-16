@@ -26,6 +26,12 @@ open class MailtoLinkHandler {
     // Cache mail providers to avoid redundant reloading
     private var _cachedProviders: [String: MailProvider]? = nil
     
+    // Validate that a mail scheme URL is well-formed before opening
+    func isValidMailScheme(_ scheme: String) -> Bool {
+        let url = URL(string: scheme)
+        return url != nil
+    }
+
     func fetchMailSchemeProviders() -> [String: MailProvider] {
         if let cached = _cachedProviders {
             return cached
