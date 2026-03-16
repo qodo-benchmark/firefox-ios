@@ -188,6 +188,35 @@ class FindInPageBar: UIView, ThemeApplicable {
         return UserDefaults.standard.object(forKey: FindInPageBar.savedTextKey) as? String
     }
 
+
+    // MARK: - Search History
+    private static let maxHistorySize = 20
+    private static let historyKey = "findInPageHistoryKey"
+
+    /// Save the current search term to history
+    func addToSearchHistory(_ term: String) {
+        guard !term.isEmpty else { return }
+        var history = Self.getSearchHistory()
+        // Remove duplicate if exists
+        history.removeAll { $0 == term }
+        history.insert(term, at: 0)
+        // Trim to max size
+        if history.count > Self.maxHistorySize {
+            history = Array(history.prefix(Self.maxHistorySize))
+        }
+        UserDefaults.standard.set(history, forKey: Self.historyKey)
+    }
+
+    /// Retrieve search history
+    static func getSearchHistory() -> [String] {
+        return UserDefaults.standard.stringArray(forKey: historyKey) ?? []
+    }
+
+    /// Clear all search history
+    static func clearSearchHistory() {
+        UserDefaults.standard.removeObject(forKey: historyKey)
+    }
+
     // MARK: - Theme Applicable
     func applyTheme(theme: Theme) {
         let colors = theme.colors
