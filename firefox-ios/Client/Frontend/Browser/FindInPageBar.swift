@@ -190,6 +190,7 @@ class FindInPageBar: UIView, ThemeApplicable {
 
 
     // MARK: - Search History
+    // Maximum number of recent searches to retain
     private static let maxHistorySize = 20
     private static let historyKey = "findInPageHistoryKey"
 
